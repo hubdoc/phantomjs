@@ -320,7 +320,7 @@ qint64 QHttpNetworkReplyPrivate::bytesAvailable() const
 bool QHttpNetworkReplyPrivate::isGzipped()
 {
     QByteArray encoding = headerField("content-encoding");
-    return qstricmp(encoding.constData(), "gzip") == 0;
+    return (qstricmp(encoding.constData(), "gzip") == 0 || qstricmp(encoding.constData(), "x-gzip") == 0);
 }
 
 void QHttpNetworkReplyPrivate::removeAutoDecompressHeader()
